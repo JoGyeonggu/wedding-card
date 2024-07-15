@@ -29,11 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     startY = event.touches[0].clientY;
   });
 
-  container.addEventListener("touchmove", function (event) {
-    endY = event.touches[0].clientY;
-  });
+  container.addEventListener("touchend", function (event) {
+    endY = event.changedTouches[0].clientY;
 
-  container.addEventListener("touchend", function () {
     if (isScrolling) return;
 
     if (startY > endY + 50) {

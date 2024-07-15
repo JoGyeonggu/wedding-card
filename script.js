@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let sections = document.querySelectorAll("section");
   let currentSection = 0;
   let isScrolling = false;
+  let startY;
+  let endY;
 
   container.addEventListener("wheel", function (event) {
     if (isScrolling) return;
@@ -16,6 +18,32 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } else {
       // Scroll up
+      if (currentSection > 0) {
+        currentSection--;
+        scrollToSection(currentSection);
+      }
+    }
+  });
+
+  container.addEventListener("touchstart", function (event) {
+    startY = event.touches[0].clientY;
+  });
+
+  container.addEventListener("touchmove", function (event) {
+    endY = event.touches[0].clientY;
+  });
+
+  container.addEventListener("touchend", function () {
+    if (isScrolling) return;
+
+    if (startY > endY + 50) {
+      // Swipe up
+      if (currentSection < sections.length - 1) {
+        currentSection++;
+        scrollToSection(currentSection);
+      }
+    } else if (startY < endY - 50) {
+      // Swipe down
       if (currentSection > 0) {
         currentSection--;
         scrollToSection(currentSection);

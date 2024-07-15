@@ -9,6 +9,9 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -16,11 +19,22 @@ body {
   background-color: #f4f4f4;
 }
 
+.main-section {
+  width: 100%;
+  max-width: 450px; /* 모바일 화면 너비에 맞춤 */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 스크롤바 숨기기 */
+}
+
 .container {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 section {

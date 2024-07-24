@@ -126,12 +126,13 @@ section {
 
 #section2 .content .message {
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.8;
   margin-bottom: 20px;
 }
 
 #section2 .content .names {
   font-size: 1.2rem;
+  line-height: 1.8;
   font-weight: bold;
   margin-bottom: 30px;
 }

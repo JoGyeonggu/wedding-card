@@ -32,16 +32,8 @@ container.addEventListener("touchstart", handleTouchStart);
 container.addEventListener("touchmove", handleTouchMove);
 container.addEventListener("touchend", handleTouchEnd);
 
-// Completely disable click events on the container
+// Prevent click events on the container
 container.addEventListener("click", (event) => {
-  event.stopPropagation();
   event.preventDefault();
-});
-
-// Also disable click events on all sections
-sections.forEach((section) => {
-  section.addEventListener("click", (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-  });
+  event.stopImmediatePropagation();
 });

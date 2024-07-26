@@ -35,7 +35,6 @@ body {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;
-  pointer-events: none; /* 클릭 이벤트 제거 */
 }
 
 section {
@@ -49,7 +48,6 @@ section {
   scroll-snap-align: start;
   background-color: white;
   box-sizing: border-box;
-  pointer-events: auto; /* 섹션 내부에서만 클릭 이벤트 허용 */
 }
 
 #section1 {

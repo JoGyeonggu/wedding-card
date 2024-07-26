@@ -58,7 +58,7 @@ section {
 }
 
 #section1 .date {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   text-align: left;
   align-self: flex-start;
   margin-left: 20px;
@@ -91,12 +91,12 @@ section {
 }
 
 #section1 .details p:first-child {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 #section1 .details p:last-child {
   font-family: "Roboto", sans-serif; /* 날짜 및 장소에 다른 폰트 적용 */
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 #section2 {

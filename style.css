@@ -1,8 +1,8 @@
 /* style.css */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -15,7 +15,7 @@ body {
 }
 
 body {
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "KoPub Batang", serif;
   background-color: #f4f4f4;
 }
 
@@ -32,14 +32,14 @@ body {
 .container {
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  overflow-y: auto;
 }
 
 section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +47,7 @@ section {
   font-size: 1.5rem;
   scroll-snap-align: start;
   background-color: white;
+  box-sizing: border-box;
 }
 
 #section1 {
@@ -54,62 +55,59 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  background-color: #f8f8f8;
+  justify-content: flex-start;
 }
 
-#section1 .date {
-  font-size: 1.7rem;
-  text-align: left;
-  align-self: flex-start;
-  margin-left: 20px;
-  border-left: 1px solid black;
-  padding-left: 15px;
+#section1 .content {
+  padding: 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#section1 .photo {
-  margin: 30px 0;
+#section1 .title-container {
+  flex: 1;
+  padding-top: 40px;
 }
 
-#section1 .photo img {
-  max-width: 80%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#section1 .details {
-  font-family: "Varela Round", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.3rem;
-  line-height: 1.5;
+#section1 .title {
+  font-size: 1.9rem;
+  margin-bottom: 2.813rem;
   color: #333;
 }
 
-#section1 .details p {
-  margin: 5px 0;
+#section1 .date {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
 }
 
-#section1 .details p:first-child {
+#section1 .names {
   font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-#section1 .details p:last-child {
-  font-family: "Roboto", sans-serif; /* 날짜 및 장소에 다른 폰트 적용 */
-  font-size: 1.4rem;
-}
-
-#section2 {
+#section1 .photo {
+  width: 100%;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  background-color: white;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+#section1 .photo img {
+  width: 100%;
+  object-fit: cover;
 }
 
 #section2 .content {
-  width: 80%;
+  width: 100%;
+  text-align: center;
 }
 
 #section2 .content .title {
@@ -121,7 +119,7 @@ section {
   width: 50%;
   border: 0;
   border-top: 1px solid black;
-  margin-bottom: 10px;
+  margin: 10px auto;
 }
 
 #section2 .content .message {
@@ -142,13 +140,80 @@ section {
   font-weight: bold;
 }
 
-/* 각 섹션에 다른 파스텔톤 배경 색을 주어 시각적으로 구분 */
 #section3 {
-  background-color: #ccffcc;
+  justify-content: flex-start;
+  text-align: center;
 }
+
+#section3 h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#section3 .map-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#section3 .map-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.map-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+  background-color: #0056b3;
+}
+
 #section4 {
   background-color: #ccffff;
 }
+
 #section5 {
   background-color: #ffccff;
+}
+
+/* 작은 화면에서의 스타일 조정 */
+@media (max-width: 375px) and (max-height: 667px) {
+  #section1 .title {
+    font-size: 2rem;
+  }
+  #section1 .date {
+    font-size: 1rem;
+  }
+  #section1 .names {
+    font-size: 1.3rem;
+  }
+  #section2 .content .title {
+    font-size: 1.6rem;
+  }
+  #section2 .content .message {
+    font-size: 1rem;
+  }
+  #section2 .content .names {
+    font-size: 1rem;
+  }
+  #section2 .content .footer {
+    font-size: 0.9rem;
+  }
 }

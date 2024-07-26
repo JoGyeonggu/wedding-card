@@ -1,62 +1,30 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function () {
-  let container = document.querySelector(".container");
-  let sections = document.querySelectorAll("section");
-  let currentSection = 0;
-  let isScrolling = false;
-  let startY;
-  let endY;
+let startY = 0;
+let endY = 0;
 
-  container.addEventListener("wheel", function (event) {
-    if (isScrolling) return;
+const container = document.querySelector(".container");
 
-    if (event.deltaY > 0) {
-      // Scroll down
-      if (currentSection < sections.length - 1) {
-        currentSection++;
-        scrollToSection(currentSection);
-      }
-    } else {
-      // Scroll up
-      if (currentSection > 0) {
-        currentSection--;
-        scrollToSection(currentSection);
-      }
-    }
-  });
+function handleTouchStart(event) {
+  startY = event.touches[0].clientY;
+}
 
-  container.addEventListener("touchstart", function (event) {
-    startY = event.touches[0].clientY;
-  });
+function handleTouchMove(event) {
+  endY = event.touches[0].clientY;
+}
 
-  container.addEventListener("touchend", function (event) {
-    endY = event.changedTouches[0].clientY;
-
-    if (isScrolling) return;
-
-    if (startY > endY + 50) {
-      // Swipe up
-      if (currentSection < sections.length - 1) {
-        currentSection++;
-        scrollToSection(currentSection);
-      }
-    } else if (startY < endY - 50) {
-      // Swipe down
-      if (currentSection > 0) {
-        currentSection--;
-        scrollToSection(currentSection);
-      }
-    }
-  });
-
-  function scrollToSection(index) {
-    isScrolling = true;
-    sections[index].scrollIntoView({
+function handleTouchEnd() {
+  if (startY > endY + 50) {
+    container.scrollBy({
+      top: window.innerHeight,
       behavior: "smooth",
-      block: "start",
     });
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000); // Wait for the scroll animation to complete
+  } else if (startY < endY - 50) {
+    container.scrollBy({
+      top: -window.innerHeight,
+      behavior: "smooth",
+    });
   }
-});
+}
+
+container.addEventListener("touchstart", handleTouchStart);
+container.addEventListener("touchmove", handleTouchMove);
+container.addEventListener("touchend", handleTouchEnd);
